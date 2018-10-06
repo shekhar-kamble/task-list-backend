@@ -1,0 +1,28 @@
+{
+  "name": "attachment",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "required": true
+    },
+    "file": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tasks": {
+      "type": "hasOne",
+      "model": "task",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

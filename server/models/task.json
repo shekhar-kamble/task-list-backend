@@ -1,0 +1,69 @@
+{
+  "name": "task",
+  "plural": "tasks",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "required": true,
+      "default": "in_progress"
+    },
+    "created_at": {
+      "type": "date",
+      "required": true,
+      "default": "now"
+    },
+    "updated_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "priority": {
+      "type": "number",
+      "required": true,
+      "default": 2
+    }
+  },
+  "validations": [],
+  "relations": {
+    "users": {
+      "type": "hasOne",
+      "model": "User",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
